@@ -11,7 +11,7 @@ describe('lab-04-api routes', () => {
 
   let joke;
   beforeEach(async () => {
-    joke = await Joke.insert({ joke: 'xc21Lmbxcib' });
+    joke = await Joke.insert({ userName: 'test user', joke: 'xc21Lmbxcib' });
 
   });
 
@@ -25,16 +25,15 @@ describe('lab-04-api routes', () => {
     });
   });
 
-  it.skip('saves your favorite dad joke', async () => {
+  it('saves your favorite dad joke', async () => {
     const res = await request(app)
       .post('/api/v1/favorites')
-      .send({ userName: 'test user', favoriteCharacter: '030555b3-4c92-4fce-93fb-e70c3ae3df8b', hairColor: 'Brown' });
+      .send({ userName: 'test user', favoriteJoke: 'xc21Lmbxcib' });
 
     expect(res.body).toEqual({
       id: expect.any(String),
-      userName: 'test user',
-      favoriteCharacter: '030555b3-4c92-4fce-93fb-e70c3ae3df8b',
-      hairColor: expect.any(String),
+      user_name: 'test user',
+      favorite_jokes: 'xc21Lmbxcib'
     });
   });
 });
